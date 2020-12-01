@@ -9,7 +9,7 @@ It will store the certificate in an existing GCP Storage bucket for future refer
 ### Requirements
 
 * 1\. Create a new HTTPS Load-balancer [here](https://console.cloud.google.com/net-services/loadbalancing/loadBalancers/list)
-   * 1\.1\. If you have no HTTPS Front End you'll need a temporary certificate in order to create one. You can use a self signed, or Google managed certificate - The action will update afterwards.    
+   * 1\.1\. If you have no HTTPS Front End you'll need a temporary certificate in order to create one. You can use a self signed, or Google managed certificate - The action will update it afterwards.    
 * 2\. Create a Cloud DNS Zone [here](https://console.cloud.google.com/net-services/dns)
   * 2\.1\. Name it accordingly, if your domain is _example.com_ then your DNS Zone's DNS Name should be example.com
   * 2\.2\. Setup your registrar to point to the new Google Cloud DNS zone. There is a link in the top right of the console, **'Registrar Setup'**, that has the values you'll need.   
