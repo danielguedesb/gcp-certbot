@@ -81,25 +81,45 @@ The name of the created/renewed certificate.
 ### Creating/Renewing a certificate 
 
 ```yaml
-uses: danielguedesb/gcp-certbot@v1
-with:
-  gcs-project: 'my-project'
-  gcs-sa: '${{ secrets.my-project-sa }}'
-  gcs-bucket: 'my-project-bucket'
-  email: 'my-email@my-domain.com'
-  domain: 'my-domain.com'
+name: GCP LetsEncrypt certificate
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 1 * * 0' # every week
+
+jobs:
+  lets-encrypt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: danielguedesb/gcp-certbot@v1
+      with:
+        gcs-project: 'my-project'
+        gcs-sa: '${{ secrets.my-project-sa }}'
+        gcs-bucket: 'my-project-bucket'
+        email: 'my-email@my-domain.com'
+        domain: 'my-domain.com'
 ```
   
 ### Creating/Renewing a certificate and attaching it to an HTTPS Load Balancer
 
 ```yaml
-uses: danielguedesb/gcp-certbot@v1
-with:
-  gcs-project: 'my-project'
-  gcs-sa: '${{ secrets.my-project-sa }}'
-  gcs-bucket: 'my-project-bucket'
-  email: 'my-email@my-domain.com'
-  domain: 'my-domain.com'
-  front-end: 'lb-https-frontend-name'
-  tar-password: 'my-cert-tar-password'
+name: GCP LetsEncrypt certificate
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 1 * * 0' # every week
+
+jobs:
+  lets-encrypt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: danielguedesb/gcp-certbot@v1
+        with:
+          gcs-project: 'my-project'
+          gcs-sa: '${{ secrets.my-project-sa }}'
+          gcs-bucket: 'my-project-bucket'
+          email: 'my-email@my-domain.com'
+          domain: 'my-domain.com'
+          front-end: 'lb-https-frontend-name'
+          tar-password: 'my-cert-tar-password'
 ```
