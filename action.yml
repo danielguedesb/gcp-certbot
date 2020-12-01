@@ -1,0 +1,41 @@
+name: 'GCP Certbot'
+description: 'Github action that adds/renews a Letsencrypt certificate to an existing GCP Load Balancer.'
+inputs:
+  gcp-project:
+    description: 'Google Cloud Project'
+    required: true
+  gcp-sa:
+    description: 'Google Cloud Service Account'
+    required: true
+  front-end:
+    description: 'Load Balancer Front End where the certificate will be attached'
+    required: false
+    default: ''
+  gcs-bucket:
+    description: 'Google Cloud Storage bucket where the certificate is stored'
+    required: true
+  tar-password:
+    description: 'Password that will be used to protect the tar file uploaded to GCS (recommended)'
+    required: false
+    default: ''
+  email:
+    description: 'The email that will be used when generating your letsencrypt certificates'
+    required: true
+  domain:
+    description: 'The plain domain name for which certificates will be generated. The configured zone must match this. The request will be for a certificate that is valid for example.com and *.example.com'
+    required: true
+
+outputs:
+  certificate-name:
+    description: 'The name of the create/renewed certificate'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.gcp-project }}
+    - ${{ inputs.gcp-sa }}
+    - ${{ inputs.front-end }}
+    - ${{ inputs.gcs-bucket }}
+    - ${{ inputs.tar-password }}
+    - ${{ inputs.email }}
+    - ${{ inputs.domain }}
