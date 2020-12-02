@@ -34,7 +34,7 @@ fi
 echo "*************** Creating or renewing certificate for $DOMAIN ***************"
 certbot certonly -n --dns-google-credentials sa.json --agree-tos -m $EMAIL \
 --non-interactive --dns-google --dns-google-propagation-seconds 90 \
---domain $DOMAIN --domain *.${DOMAIN}
+--domain $DOMAIN --domain *.${DOMAIN} --quiet
 
 tar -zcf certificate.tar.gz --directory /etc/letsencrypt/ .
 if [[ ! -z $TAR_PASSWORD ]]; then
