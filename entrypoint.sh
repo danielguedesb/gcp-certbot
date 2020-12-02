@@ -1,7 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-# Join array by delimiter - see https://stackoverflow.com/a/17841619/2242975
 function join_by { local IFS="$1"; shift; echo "$*"; }
 
 GCP_PROJECT=$1
