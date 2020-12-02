@@ -93,8 +93,8 @@ jobs:
     steps:
       - uses: danielguedesb/gcp-certbot@v1
       with:
-        gcs-project: 'my-project'
-        gcs-sa: '${{ secrets.my-project-sa }}'
+        gcp-project: 'my-project'
+        gcp-sa: '${{ secrets.my-project-sa }}'
         gcs-bucket: 'my-project-bucket'
         email: 'my-email@my-domain.com'
         domain: 'my-domain.com'
@@ -115,8 +115,8 @@ jobs:
     steps:
       - uses: danielguedesb/gcp-certbot@v1
         with:
-          gcs-project: 'my-project'
-          gcs-sa: '${{ secrets.my-project-sa }}'
+          gcp-project: 'my-project'
+          gcp-sa: '${{ secrets.my-project-sa }}'
           gcs-bucket: 'my-project-bucket'
           email: 'my-email@my-domain.com'
           domain: 'my-domain.com'
