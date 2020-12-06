@@ -1,4 +1,4 @@
-# Hello world docker action
+# GCP Certbot
 
 Github action that creates/renews a Letsencrypt certificate and, optionally, links it to an existing GCP Load Balancer.
 
